@@ -2,7 +2,7 @@
 All graph search algorithms to make my life easier
 
 # Available Algo:
-- US: Uniformed Search
+- US: Uninformed Search
 
 - IS: Informed Search (Weighted Graph)
 

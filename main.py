@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from uniform_search import *
+from uninformed_search import *
 from informed_search import *
 
 # Main
@@ -49,5 +49,24 @@ if __name__ == "__main__":
         "P": [("F", 2), ("G", 2)],
         "S": [("A", 1), ("B", 1), ("C", 2)],
     }
-    ucs = UniformCostSearch(weighted_graph, ("S", 0), "G")
-    ucs.solve()
+    # ucs = UniformCostSearch(weighted_graph, ("S", 0), "G")
+    # ucs.solve()
+    heuristic_table = {
+        "A": 5.1,
+        "B": 4.1,
+        "C": 3.9,
+        "D": 4,
+        "E": 2.2,
+        "F": 3.8,
+        "G": 0,
+        "H": 3.7,
+        "J": 7,
+        "K": 6,
+        "L": 4,
+        "M": 0.5,
+        "N": 1.5,
+        "P": 1.8,
+        "S": 4.5, 
+    }
+    a_star = AStarSearch(weighted_graph, ("S", heuristic_table["S"]), "G", heuristic_table)
+    a_star.solve()
