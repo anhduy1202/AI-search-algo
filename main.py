@@ -25,9 +25,10 @@ if __name__ == "__main__":
         "Kiev": ["Gale"],
         "Gale": [],
     }
-    dfs = DepthFirstTreeSearch(graph, "E", "B")
+    # dfs = DepthFirstTreeSearch(graph, "E", "B")
     # dfs.with_loop_checking()
     # bfs = BreadthFirstSearch(graph, "E", "B")
+    # bfs.solve()
     # ids  = IterativeDeepening(graph2, "Bob", "Gale")
     # print(ids.solve(max_depth=3))
 

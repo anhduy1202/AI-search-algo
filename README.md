@@ -14,3 +14,4 @@ All graph search algorithms to make my life easier
 | US | `BreadthFirstSearch()`  | solve() |  `bfs = BreadthFirstSearch(graph, "E", "B")` <br/> `bfs.solve()`  |
 | US | `IterativeDeepening()`  | solve() |  `ids  = IterativeDeepening(graph2, "Bob", "Gale")` <br/> `ids.solve(max_depth=?)`  |
 | IS | `UniformCostSearch()`  | solve() |  `ucs = UniformCostSearch(weighted_graph, ("S", 0), "G")` <br/> `ucs.solve()`  |
+| IS | `AStarSearch()`  | solve() |  `a_star = AStarSearch(weighted_graph, ("S", heuristic_table["S"]), "G", heuristic_table)` <br/> `a_star.solve()`  |

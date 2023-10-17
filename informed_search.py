@@ -51,19 +51,22 @@ Cons: Expensive, space complexity
             print(f"Frontier: {self.frontier}")
             node, cost = heapq.heappop(self.frontier)
             if node == self.goal_state:
+                print(f"Frontier: {self.frontier}, Return {node} = goal")
                 print(f"Explored: {self.explored}")
                 return True
+            print(f"Explored: {self.explored} \n")
             self.explored.append(node)
             for child in self.graph[node]:
-                if (child[0], cost + child[1]) not in self.frontier and child[
-                    0
-                ] not in self.explored:
-                    heapq.heappush(self.frontier, (child[0], cost + child[1]))
-                elif child in self.frontier:
-                    # if child has higher path cost, replace it
-                    if child[1] > cost + child[1]:
-                        self.frontier.remove(child)
-                        heapq.heappush(self.frontier, (child[0], cost + child[1]))
+                new_cost = cost + child[1]
+                if child[0] not in self.explored:
+                    if not any(child[0] in x for x in self.frontier):
+                        heapq.heappush(self.frontier, (child[0], new_cost))
+                else:
+                    for element in self.frontier:
+                        possible_node, possible_cost = element
+                        if possible_node == child[0] and new_cost < possible_cost:
+                            self.frontier.remove(element)
+                            heapq.heappush(self.frontier, (child[0], new_cost))
 
 
 class AStarSearch:
@@ -112,16 +115,20 @@ Optimal: {self.optimal}
             print(f"Frontier: {self.frontier}")
             node, cost = heapq.heappop(self.frontier)
             if node == self.goal_state:
+                print(f"Frontier: {sorted(self.frontier, key=lambda x: (x[1], x[0]))}, Return {node} = goal")
                 print(f"Explored: {self.explored}")
                 return True
+            print(f"Explored: {self.explored} \n")
             self.explored.append(node)
             for child in self.graph[node]:
                 new_cost = (cost - self.heuristic[node]) + child[1] + self.heuristic[child[0]]
-                if child[0] not in self.frontier and child[0] not in self.explored:
-                    heapq.heappush(self.frontier, (child[0], new_cost))
-                elif child in self.frontier:
-                    # if child has higher path cost, replace it
-                    if child[1] > cost + child[1]:
-                        self.frontier.remove(child)
+                if child[0] not in self.explored:
+                    if not any(child[0] in x for x in self.frontier):
                         heapq.heappush(self.frontier, (child[0], new_cost))
-
+                # Check if child is in frontier with higher path cost
+                else:
+                    for element in self.frontier:
+                        possible_node, possible_cost = element
+                        if possible_node == child[0] and new_cost < possible_cost:
+                            self.frontier.remove(element)
+                            heapq.heappush(self.frontier, (child[0], new_cost))

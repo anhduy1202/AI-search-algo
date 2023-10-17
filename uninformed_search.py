@@ -74,9 +74,10 @@ Optimal: {self.optimal}
             print(f"Frontier: {self.frontier}")
             node = self.frontier.pop()
             if node == self.goal_state:
-                print(f"Path: {self.path}")
+                print(f"Path: {self.path} \n")
                 return True
             self.path.insert(0, node)
+            print(f"Path: {self.path} \n")
             # Check top node of path lead to dead an, remove it from path
             if self.graph[self.path[0]] == []:
                 self.path.pop(0)
@@ -151,6 +152,7 @@ Optimal: {self.optimal}
             if node == self.goal_state:
                 print(f"Explored: {self.explored}")
                 return True
+            print(f"Explored: {self.explored} \n")
             self.explored.append(node)
             for child in self.graph[node]:
                 if child not in self.frontier and child not in self.explored:
