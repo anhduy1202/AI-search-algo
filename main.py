@@ -18,6 +18,15 @@ if __name__ == "__main__":
         "G": ["A"],
         "H": [],
     }
+    # graph = {
+    #     "A": ["B", "C"],
+    #     "B": ["D", "E"],
+    #     "C": ["F", "G"],
+    #     "D": ["E"],
+    #     "E": ["C", "F"],
+    #     "F": [],
+    #     "G": []
+    # }
     graph2 = {
         "Bob": ["Mary", "Jane", "Ivan"],
         "Mary": ["Goldman", "Beth", "Sullivan"],
@@ -54,8 +63,40 @@ if __name__ == "__main__":
         "P": [("F", 2), ("G", 2)],
         "S": [("A", 1), ("B", 1), ("C", 2)],
     }
+    # weighted_graph = {
+    #     "Arad": [("Zerind", 75), ("Timisoara", 118), ("Sibiu", 140)],
+    #     "Zerind": [("Aread", 75), ("Oradea", 71)],
+    #     "Oradea": [("Zerind", 71), ("Sibiu", 151)],
+    #     "Sibiu": [("Arad", 140), ("Oradea", 151), ("Fagaras", 99), ("Rimicu Vilcea", 80)],
+    #     "Timisoara": [("Arad", 118), ("Lugoj", 111)],
+    #     "Lugoj": [("Timisoara", 111), ("Mehadia", 70)],
+    #     "Mehadia": [("Lugoj", 70), ("Dobreta", 75)],
+    #     "Dobreta": [("Mehadia", 75), ("Craiova", 120)],
+    #     "Craiova": [("Dobreta", 120), ("Pitesti", 138), ("Rimicu Vilcea", 146)],
+    #     "Pitesti": [("Bucharest", 101), ("Craiova", 138), ("Rimicu Vilcea", 97)],
+    #     "Rimicu Vilcea": [("Sibiu", 80), ("Pitesti", 97), ("Craiova", 97)],
+    #     "Fagaras": [("Bucharest", 211), ("Sibiu", 99)],
+    #     "Bucharest": [("Fagaras", 211), ("Pitesti", 101), ("Giurgiu", 90)],
+    #     "Giurgiu": [("Bucharest", 90)],
+    # }
     # ucs = UniformCostSearch(weighted_graph, ("S", 0), "G")
     # ucs.solve()
+    # heuristic_table = {
+    #     "Arad": 366,
+    #     "Zerind": 374,
+    #     "Oradea": 380,
+    #     "Sibiu": 253,
+    #     "Timisoara": 329,
+    #     "Lugoj": 244,
+    #     "Mehadia": 241,
+    #     "Dobreta": 242,
+    #     "Craiova": 160,
+    #     "Pitesti": 98,
+    #     "Rimicu Vilcea": 193,
+    #     "Fagaras": 178,
+    #     "Bucharest": 0,
+    #     "Giurgiu": 77
+    # }
     heuristic_table = {
         "A": 5.1,
         "B": 4.1,
@@ -73,8 +114,9 @@ if __name__ == "__main__":
         "P": 1.8,
         "S": 4.5, 
     }
-    # a_star = AStarSearch(weighted_graph, ("S", heuristic_table["S"]), "G", heuristic_table)
-    # a_star.solve()
+
+    a_star = AStarSearch(weighted_graph, ("S", heuristic_table["S"]), "G", heuristic_table)
+    a_star.solve()
     
     """ Adversarial Search """
 
@@ -84,7 +126,7 @@ if __name__ == "__main__":
     # MiniMax = MiniMax()
     # MiniMax.best_move(game_tree_graph, "A", 3)
 
-    AlphaBeta = AlphaBetaPruning()
-    AlphaBeta.best_move(game_tree_graph, "A", 4)
+    # AlphaBeta = AlphaBetaPruning()
+    # AlphaBeta.best_move(game_tree_graph, "A", 4)
 
 

@@ -71,14 +71,21 @@ Optimal: {self.optimal}
         while True:
             if not self.frontier:
                 return False
-            print(f"Frontier: {self.frontier}")
+            print(f"\nFrontier: {self.frontier}")
             node = self.frontier.pop()
             if node == self.goal_state:
+                print(f"Explored: {self.explored}")
                 print(f"Path: {self.path} \n")
+                print(f"Frontier: {node} is popped and is a goal")
+                print(f"Path: ")     
+                self.explored.append(node)
+                print(f"Explored: {self.explored}")
                 return True
+            print(f"Path: {self.path}")
+            print(f"Explored: {self.explored}")
             self.path.insert(0, node)
-            print(f"Path: {self.path} \n")
-            # Check top node of path lead to dead an, remove it from path
+            self.explored.append(node)
+            # Check top node of path lead to dead end, remove it from path
             if self.graph[self.path[0]] == []:
                 self.path.pop(0)
             self.frontier.extend(self.graph[node])
