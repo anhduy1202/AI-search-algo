@@ -1,9 +1,13 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 from uninformed_search import *
 from informed_search import *
+from adversarial_search import *
+from game_tree import *
 
 # Main
 if __name__ == "__main__":
+    
+    """ Uninformed Search """
     graph = {
         "A": ["B", "C"],
         "B": ["D", "E"],
@@ -32,7 +36,7 @@ if __name__ == "__main__":
     # ids  = IterativeDeepening(graph2, "Bob", "Gale")
     # print(ids.solve(max_depth=3))
 
-    ### Uniform Search
+    """ Informed Search """
     weighted_graph = {
         "A": [("S", 1), ("L", 4)],
         "B": [("S", 1), ("D", 2), ("F", 1), ("E", 2)],
@@ -69,5 +73,18 @@ if __name__ == "__main__":
         "P": 1.8,
         "S": 4.5, 
     }
-    a_star = AStarSearch(weighted_graph, ("S", heuristic_table["S"]), "G", heuristic_table)
-    a_star.solve()
+    # a_star = AStarSearch(weighted_graph, ("S", heuristic_table["S"]), "G", heuristic_table)
+    # a_star.solve()
+    
+    """ Adversarial Search """
+
+    """Game Tree"""
+    # print_game_tree(game_tree_graph, "A")
+
+    # MiniMax = MiniMax()
+    # MiniMax.best_move(game_tree_graph, "A", 3)
+
+    AlphaBeta = AlphaBetaPruning()
+    AlphaBeta.best_move(game_tree_graph, "A", 4)
+
+
